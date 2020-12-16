@@ -8,16 +8,18 @@
 <body>
     <script>
         "use strict";
-
+        
         let game = {
             count: 0,
             gameIsRunning: true,
+            // Функция вычисления случайных чисел
             random: function(min,max){
                 return Math.floor(min + Math.random() * (max-min));
             },
+            // Функция угадай число
             checkAnswer: function(random){
                 let answer = +prompt('Укажите число (-1 - закончить игру)');
-
+                // Цикл для повторного вызова поля ввода
                 while(this.gameIsRunning){
                     if(answer === -1){
                         this.gameIsRunning = false;
@@ -28,12 +30,14 @@
                         alert('Поздравляем, вы угадали число!');
                         this.gameIsRunning = false;
                     }else{
+                        // счётчик
                         this.count++;
                         answer = +prompt('Не угадали.\nУкажите другое число (-1 - закончить игру)\nПопыток: '+this.count);
                     }
                 }
             }
         }
+        // Вызов функции угадай число
         console.log(game.checkAnswer(game.random(1,6)));
     </script>
 </body>
